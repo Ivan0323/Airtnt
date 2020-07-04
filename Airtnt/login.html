@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="images\tnt.png" sizes="32x32">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AirTNT</title>
+    <link rel="stylesheet" href="css\loginstyle.css">
+    <script src="https://cdn.staticfile.org/vue/2.6.9/vue.js"></script>
+        
+</head>
+
+<body>
+    <div id='app' class="container">
+        <img src="images\bg.jpg" />
+        <div class="panel">
+            <div class="content login">
+                <h1 style="color: #506a85;">AirTnT</h1>
+                <div class="switch">
+                    <span :class='{"active": active === "login"}' @click='go("login")'>登陆</span>
+                    <span>/</span>
+                    <span :class='{"active": active === "register"}' @click='go("register")'>注册</span>
+                </div>
+                <div class='form' id="fromLogin">
+                    <form action="signup.php" method="POST">
+                        <template v-if='active === "register"'>
+                            <div class="input"><input type="text" name="Username" id="username" /><label for="username">用户名</label></div>
+                            <div class="input"><input type="password" name="Password" id="Password" /><label for="Password">密码</label></div>
+                            <span>忘记密码?</span>
+                            <button type="submit">注册</button>
+                        </template>
+                    </form>
+                    
+                    <form action="login.php" method="POST">
+                        <template v-if='active === "login"'>
+                            <div class="input"><input type="text" name="Username" id="username" /><label for="username">用户名</label></div>
+                            <div class="input"><input type="password" name="Password" id="Password" /><label for="Password">密码</label></div>
+                            <span>忘记密码?</span>
+                            <button type="submit">登陆</button>
+                        </template>
+                    </form>
+                    <a href="index.php" class="active"> <button type="submit">主页</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+var vue = new Vue({
+    el: '#app',
+    data: {
+        active: 'login'
+    },
+    methods: {
+        go (type) {
+            this.active = type
+        }
+    },
+    beforeMount () {
+        
+    }
+})
+</script>
+
+</html>
